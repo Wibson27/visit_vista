@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Touris Registration</title>
+  <link rel="stylesheet" href="css/tourist_regist.css">
+  <script src="js/tourist_regist.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="parallax"></div>
+  <div class="form-section">
+    <div class="header">
+      <h1>Lets Start Your Journey!</h1>
+      <p>Create an account to explore amazing destinations</p>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+
+    <div class="form-container">
+        <form>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" required placeholder="Enter your first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" required placeholder="Enter your last name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Create a secure password">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required placeholder="Confirm your password">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required placeholder="10-12 digits">
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Preferred Destination (Optional)</label>
+                <select id="destination" required>
+                    <option value="" disabled selected style="color: lightgray;">Select a district</option>
+                    <option value="bantul">Bantul</option>
+                    <option value="sleman">Sleman</option>
+                    <option value="yogyakarta">Yogyakarta</option>
+                    <option value="gunungkidul">Gunung Kidul</option>
+                    <option value="kulonprogo">Kulon Progo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="register-button">Create Account</button>
+
+            <div class="footer">
+                Already have an account? <a href="#">Log in</a>
+                <span class="divider">|</span>
+                <a href="#">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+  </div>
+  <script src="touris-registration.js"></script>
+</body>
+</html>

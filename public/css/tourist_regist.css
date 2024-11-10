@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    padding-top: 0; /* Remove the top padding */
+    position: relative;
+    min-height: 100vh;
+}
+
+.parallax {
+    background-image: url('../images/Background\ Login\ Regist\ .jpg');
+    min-height: 100vh; /* Changed from 200vh to 100vh */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+    
+.form-section {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px; /* untuk lebar */
+    margin: 27px auto; /* Added margin to create some space from top */
+    position: relative;
+}
+
+/* Rest of the CSS remains the same */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.header h1 {
+    color: #2D3748;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.header p {
+    color: #718096;
+    font-size: 16px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #4A5568;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s;
+    background: white;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4299E1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+.register-button {
+    background: #48BB78;
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 24px;
+}
+
+.register-button:hover {
+    background: #38A169;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 24px;
+    color: #718096;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #4299E1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    display: inline-block;
+    margin: 0 8px;
+    color: #CBD5E0;
+}
+
+/* Error Message Styling */
+.error-message {
+    color: #dc3545;
+    background-color: #fde8e8;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 14px;
+    display: none;
+}
+
+.error-message.show {
+    display: block;
+}
+
+input:invalid {
+    border-color: #dc3545;
+}
+
+/* Success Message Styling */
+.success-message {
+    color: #198754;
+    background-color: #d1e7dd;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    display: none;
+}
+
+.success-message.show {
+    display: block;
+}
