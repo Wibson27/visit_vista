@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Owner Registration</title>
+    <link rel="stylesheet" href="businessowner_regist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="form-section">
+        <h2>Ready to Start Your Business Journey?</h2>
+        
+        <!-- Error message container -->
+        <div id="errorMessage" class="error-message"></div>
+        
+        <div class="form-container">
+            <form id="businessOwnerForm" class="registration-form" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label for="ownerId">Owner ID</label>
+                    <input type="text" 
+                           id="ownerId" 
+                           name="ownerId" 
+                           required 
+                           placeholder="Enter your Owner ID">
+                </div>
+
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" 
+                           id="businessName" 
+                           name="businessName" 
+                           required 
+                           placeholder="Enter your Business Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required 
+                           placeholder="Enter your Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" 
+                           required 
+                           minlength="8" 
+                           placeholder="Minimum 8 characters">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" 
+                           required 
+                           pattern="\d{10,12}" 
+                           placeholder="10-12 digits">
+                </div>
+
+                <h3>Upload Validation Documents</h3>
+
+                <label for="npwp">Company Tax ID Number (optional)</label>
+                <input type="file" id="npwp" name="npwp" accept=".pdf,.jpg,.jpeg">
+
+                <label for="domisili">Company Domicile Certificate</label>
+                <input type="file" id="domisili" name="domisili" accept=".pdf,.jpg,.jpeg" required>
+
+                <label for="situ">Business Place Permit (SITU)</label>
+                <input type="file" id="situ" name="situ" accept=".pdf,.jpg,.jpeg" required>
+
+                <label for="pariwisata">Tourism Business License</label>
+                <input type="file" id="pariwisata" name="pariwisata" accept=".pdf,.jpg,.jpeg" required>
+
+                <label for="siup">Trading Business License (SIUP)</label>
+                <input type="file" id="siup" name="siup" accept=".pdf,.jpg,.jpeg" required>
+
+                <label for="asita">ASITA Membership (optional)</label>
+                <input type="file" id="asita" name="asita" accept=".pdf,.jpg,.jpeg">
+
+                <button type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
