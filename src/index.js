@@ -1,58 +1,61 @@
-// Load environment variables
-require('dotenv').config();
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import { query } from './config/database.js';
+import dotenv from 'dotenv';
 
-// Import dependencies
-const express = require('express');
-const cors = require('cors');
+// Initialize dotenv
+dotenv.config();
 
-// Import routes
-const authRoutes = require('./routes/auth');
-
-// Initialize express
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware
-app.use(cors());  // Enable Cross-Origin Resource Sharing
-app.use(express.json());  // Parse JSON bodies
-app.use(express.urlencoded({ extended: true }));  // Parse URL-encoded bodies
-
-// Basic root route
-app.get('/', (req, res) => {
-    res.json({
-        message: 'Welcome to VisitVista API',
-        status: 'Server is running'
-    });
-});
-
-// Serve static files from public directory
+app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
 app.use(express.static('public'));
 
-// Routes
-app.use('/api/auth', authRoutes);
+// Places API endpoint
+app.get('/api/places', async (req, res) => {
+  try {
+      console.log('Starting places fetch...');
+      console.log('Database config:', {
+          host: process.env.DB_HOST,
+          database: process.env.DB_NAME,
+          port: process.env.DB_PORT,
+          user: process.env.DB_USER,
+          // Don't log password
+      });
 
-// Basic route for testing
-app.get('/health', (req, res) => {
-    res.json({ status: 'ok', message: 'Server is running' });
+      const result = await query(
+          `SELECT id, name, description, images, price
+           FROM places
+           ORDER BY created_at DESC`,
+          []
+      );
+
+      console.log(`Successfully fetched ${result.rows.length} places`);
+      res.json(result.rows);
+  } catch (error) {
+      console.error('Detailed error in /api/places:', error);
+      res.status(500).json({
+          error: 'Failed to fetch places',
+          details: error.message,
+          // In production, you might want to remove error details
+      });
+  }
 });
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: 'Something broke!' });
+// Serve static files
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Handle 404 routes
-app.use((req, res) => {
-    res.status(404).json({ error: 'Route not found' });
-});
-
-// Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err) => {
-    console.error('Unhandled Rejection:', err);
+    console.log(`Server running on port ${PORT}`);
 });
