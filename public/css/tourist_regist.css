@@ -11,18 +11,18 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden; 
 }
 
 body {
-    padding-top: 0; /* Remove the top padding */
+    padding-top: 0; 
     position: relative;
     min-height: 100vh;
 }
 
 .parallax {
     background-image: url('../images/Background\ Login\ Regist\ .jpg');
-    min-height: 100vh; /* Changed from 200vh to 100vh */
+    min-height: 100vh; 
     width: 100%;
     position: fixed;
     top: 0;
@@ -32,6 +32,15 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     z-index: -1;
+    &::before {  /* Menambahkan overlay gelap */
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); 
+    }
 }
     
 .form-section {
